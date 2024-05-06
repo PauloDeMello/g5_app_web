@@ -88,9 +88,14 @@ class LoginController extends BaseController
      */
     protected function getValidationRules(): array
     {
-        $rules = new ValidationRules();
+        #$rules = new ValidationRules();
+        return setting('Validation.login') ?? [
+            'username' => config('AuthSession')->usernameValidationRules,
+           // 'email'    => config('AuthSession')->emailValidationRules,
+            'password' => 'required',
+        ];
 
-        return $rules->getLoginRules();
+        #return $rules->getLoginRules();
     }
 
     /**

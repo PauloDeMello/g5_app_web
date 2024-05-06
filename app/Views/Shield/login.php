@@ -32,9 +32,8 @@
                     <?= csrf_field() ?>
 
                     <!-- Email -->
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="floatingEmailInput" name="email" inputmode="email" autocomplete="email" placeholder="<?= lang('Auth.email') ?>" value="<?= old('email') ?>" required>
-                        <label for="floatingEmailInput"><?= lang('Auth.email') ?></label>
+                    <div class="mb-2">
+                        <input type="text" class="form-control" name="username" placeholder="<?= lang('Auth.username') ?>" value="<?= old('username') ?>" required />
                     </div>
 
                     <!-- Password -->

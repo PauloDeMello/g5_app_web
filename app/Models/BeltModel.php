@@ -32,4 +32,20 @@ class BeltModel extends Model
 
         return explode(" ,. ", $syllabusString);
     }
+
+    public function SetupBeltModel(int $beltId)
+    {
+        $sql = 
+        "SELECT id, beltID, name, syllabus FROM beltdata WHERE beltID=$beltId";
+        $result = $this->query($sql);
+
+        if(count($result->getResultArray()) > 0) 
+        {
+            $userResult = $result->getrow();
+        }
+
+        $syllabusString = $userResult->syllabus;
+        $this->syllabus = explode(" ,. ", $syllabusString);
+        $this->name = $userResult->name;
+    }
 }

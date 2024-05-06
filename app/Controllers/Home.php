@@ -11,7 +11,8 @@ class Home extends BaseController
         $beltModel = new BeltModel();
         $beltID = auth()->user()->belt;
         $syllabus = $beltModel->ReturnSyllabusArray($beltID);
-        $data = ['syllabus' => $syllabus];
+        $beltModel->SetupBeltModel($beltID);
+        $data = ['syllabus' => $beltModel->syllabus, 'beltName' => $beltModel->name];
         return view('home', $data);
     }
 }
