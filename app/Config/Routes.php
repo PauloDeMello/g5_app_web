@@ -7,6 +7,7 @@ use CodeIgniter\Router\RouteCollection;
  */
 #$routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
+$routes->get('/home', 'Home::index');
 #service('auth')->routes();
 service('auth')->routes($routes);
 
