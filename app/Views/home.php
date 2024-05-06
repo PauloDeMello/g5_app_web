@@ -11,8 +11,12 @@ $beltArray = array
     "7" => "Black",
 );
 echo "this is the home page <br>";
-
 $name = auth()->user()->name;
 $beltName = $beltArray[auth()->user()->belt];
 echo "$name <br>";
-echo "$beltName belt";
+echo "$beltName belt <br>";
+
+
+foreach ($syllabus as $technique) {
+    echo "$technique <br>";
+  }

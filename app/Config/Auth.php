@@ -408,7 +408,6 @@ class Auth extends ShieldAuth
      */
     public array $tables = [
         'users'             => 'users',
-        'beltdata'          => 'beltdata',
         'identities'        => 'auth_identities',
         'logins'            => 'auth_logins',
         'token_logins'      => 'auth_token_logins',
