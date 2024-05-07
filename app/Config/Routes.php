@@ -12,5 +12,6 @@ $routes->get('/home', 'Home::index');
 service('auth')->routes($routes);
 
 $routes->get('login', 'LoginController::loginView');
+$routes->get('logout', 'LoginController::logout_action');
 $routes->get('register', 'RegisterController::registerView');
 
