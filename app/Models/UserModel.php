@@ -17,6 +17,7 @@ class UserModel extends ShieldUserModel
 
             'name',
             'belt',
+            'class',
         ];
     }
 }
