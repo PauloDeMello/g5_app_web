@@ -3,7 +3,13 @@
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<head>     
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+
 <body>
+
    <div class="topnav" id="myTopnav">
     <a href="home">Home</a>
     <a href="syllabus">Syllabus</a>
