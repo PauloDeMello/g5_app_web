@@ -4,31 +4,6 @@
 
 <?= $this->section('main') ?>
 
-    <link rel="manifest" href="/manifest.json">
-    <script>navigator.serviceWorker.register("service-worker.js")</script> 
-
-    <div>
-        <p>Before you enable the PWA, check out how slow this website is.</p>
-        <button id="enable">Enable the PWA</button>
-    </div>
-
-    <button id="install">Install this app</button>
-    <script src="/script.js"></script>
-
-    <script> 
-    if ('serviceWorker' in navigator) 
-    {
-        navigator.serviceWorker
-                .register('./service-worker.js')
-                .then(function() { console.log('Service Worker Registered'); });
-    } 
-    else 
-    {
-        console.log("service worker not registered");
-    }
-    </script>
-    </div>
-
     <div class="container d-flex justify-content-center p-5">
         <div class="card col-12 col-md-5 shadow-sm">
             <div class="card-body">
