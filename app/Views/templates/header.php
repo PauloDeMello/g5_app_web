@@ -1,10 +1,6 @@
-<style>
-    <?php include 'navbar.css'; ?>
-</style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 <head>     
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="/manifest.json" crossorigin="use-credentials">
+    <link rel="stylesheet" href="/css/navbar.css">
 </head>
 
 
