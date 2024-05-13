@@ -1,0 +1,72 @@
+{
+    "short_name": "G5 App",
+    "name": "G5 Training App",
+    "icons": [
+        {
+            "src": "/images/manifest-icon-192.maskable.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/images/manifest-icon-192.maskable.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "/images/manifest-icon-512.maskable.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/images/manifest-icon-512.maskable.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Jump to homepage",
+            "short_name": "Home",
+            "description": "Jump direction into starting or joining a live session",
+            "url": "/?home",
+            "icons": [
+                {
+                    "src": "https://pwabuilder.com/assets/icons/icon_192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        }
+    ],
+    "display_override": [
+        "window-controls-overlay"
+    ],
+    "protocol_handlers": [
+        {}
+    ],
+    "orientation": "any",
+    "id": "/?source=pwa",
+    "start_url": "/?source=pwa",
+    "background_color": "#3367D6",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#3367D6",
+    "description": "G5 supplementary training app",
+    "screenshots": [
+        {
+            "src": "/images/screenshot1.png",
+            "type": "image/png",
+            "sizes": "540x720",
+            "form_factor": "narrow"
+        },
+        {
+            "src": "/images/screenshot2.png",
+            "type": "image/png",
+            "sizes": "720x540",
+            "form_factor": "wide"
+        }
+    ]
+}
