@@ -19,16 +19,10 @@ class Syllabus extends ResourceController
 
     public function index()
     {
-        $beltID = auth()->user()->belt;
-        $syllabus = $this->model->ReturnSyllabusArray($beltID);
-        $this->model->SetupBeltModel($beltID);
-        $name = auth()->user()->name;
-        $class = auth()->user()->class;
-        $data = ['name' => $name, 'syllabus' => $this->model->syllabus, 'beltName' => $this->model->name, 'class' => $class];
 
-        echo view('templates/header', $data);
-        echo view('syllabus', $data);
-        echo view('templates/footer', $data);
+        echo view('templates/header', );
+        echo view('syllabus', );
+        echo view('templates/footer', );
     }
 
     public function getIndex()

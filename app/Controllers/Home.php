@@ -1,9 +1,21 @@
 <?php
-
 namespace App\Controllers;
 
-class Home extends RenderController
+use CodeIgniter\RESTful\ResourceController;
+use App\Models\UserModel;
+
+class Home extends ResourceController
 {
+    protected $model;
+    // There used to be a bug in version 4.0.2 now fixed in v4.0.3. No issues in json return
+    protected $format    = 'json';
+	
+    // Prefered way
+    public function __construct()
+    {
+        $this->model  = new UserModel();
+    }
+
     public function index()
     {
         $name = auth()->user()->name;
@@ -16,6 +28,18 @@ class Home extends RenderController
             return redirect('admin');
         }
 
-        $this->render_page('home', $data);
+        echo view('templates/header', $data);
+        echo view('home', $data);
+        echo view('templates/footer', $data);
+    }
+
+    public function getIndex()
+    {
+        $name = auth()->user()->name;
+        $class = auth()->user()->class;
+
+        $data = ['name' => $name, 'class' => $class];
+
+        return $this->respond($data);
     }
 }

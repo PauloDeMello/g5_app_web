@@ -1,4 +1,4 @@
-const getSyllabusJson = async () => {
+const GetSyllabusJson = async () => {
     const response = await fetch(document.location.origin + "/api/syllabus");
     console.log(document.location.origin + "/api/syllabus");
     const beltJson = await response.json(); //extract JSON from the http response
@@ -7,7 +7,21 @@ const getSyllabusJson = async () => {
     // do something with myJson
 }
 
-const updatePageElements = (data) => {
+const GetInfoJson = async () => {
+    const response = await fetch(document.location.origin + "/api/info");
+    console.log(document.location.origin + "/api/info");
+    const infoJson = await response.json(); //extract JSON from the http response
+
+    return infoJson
+    // do something with myJson
+}
+
+const UpdateHomePageElements = (data) => {
+    document.getElementById('name').innerHTML = `Welcome ${data.name} : ${data.class}`;
+}
+
+
+const UpdateSyllabusPageElements = (data) => {
     document.getElementById('name').innerHTML = `Welcome ${data.name} : ${data.class}`;
     document.body.appendChild(genTable(data.syllabus, data.beltName));
 }
