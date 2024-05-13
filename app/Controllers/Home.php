@@ -28,9 +28,9 @@ class Home extends ResourceController
             return redirect('admin');
         }
 
-        echo view('templates/header', $data);
-        echo view('home', $data);
-        echo view('templates/footer', $data);
+        echo view('templates/header');
+        echo view('home');
+        echo view('templates/footer');
     }
 
     public function getIndex()

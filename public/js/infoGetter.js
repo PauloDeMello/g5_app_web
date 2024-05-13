@@ -1,3 +1,34 @@
+const GetSyllabusJsonCacheOrNetwork = async () => {
+    var networkDataReceived = false;
+
+    var networkUpdate = await fetch(document.location.origin + "/api/info")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            networkDataReceived = true;
+            UpdateSyllabusPageElements(data);
+        });
+
+    // fetch cached data
+    caches
+        .match('/syllabus.json')
+        .then(function (response) {
+            if (!response) throw Error('No data');
+            return response.json();
+        })
+        .then(function (data) {
+            // don't overwrite newer network data
+            if (!networkDataReceived) {
+                UpdateSyllabusPageElements(data);
+            }
+        })
+        .catch(function () {
+            // we didn't get cached data, the network is our last hope:
+            return networkUpdate;
+        })
+}
+
 const GetSyllabusJson = async () => {
     const response = await fetch(document.location.origin + "/api/syllabus");
     console.log(document.location.origin + "/api/syllabus");
