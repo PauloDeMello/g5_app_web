@@ -2,19 +2,43 @@
 
 namespace App\Controllers;
 
+use CodeIgniter\RESTful\ResourceController;
 use App\Models\BeltModel;
 
-class Syllabus extends RenderController
+class Syllabus extends ResourceController
 {
+    protected $model;
+    // There used to be a bug in version 4.0.2 now fixed in v4.0.3. No issues in json return
+    protected $format    = 'json';
+	
+    // Prefered way
+    public function __construct()
+    {
+        $this->model  = new BeltModel();
+    }
+
     public function index()
     {
-        $beltModel = new BeltModel();
         $beltID = auth()->user()->belt;
-        $syllabus = $beltModel->ReturnSyllabusArray($beltID);
-        $beltModel->SetupBeltModel($beltID);
+        $syllabus = $this->model->ReturnSyllabusArray($beltID);
+        $this->model->SetupBeltModel($beltID);
         $name = auth()->user()->name;
         $class = auth()->user()->class;
-        $data = ['name' => $name, 'syllabus' => $beltModel->syllabus, 'beltName' => $beltModel->name, 'class' => $class];
-        $this->render_page('syllabus', $data);
+        $data = ['name' => $name, 'syllabus' => $this->model->syllabus, 'beltName' => $this->model->name, 'class' => $class];
+
+        echo view('templates/header', $data);
+        echo view('syllabus', $data);
+        echo view('templates/footer', $data);
+    }
+
+    public function getIndex()
+    {
+        $beltID = auth()->user()->belt;
+        $syllabus = $this->model->ReturnSyllabusArray($beltID);
+        $this->model->SetupBeltModel($beltID);
+        $name = auth()->user()->name;
+        $class = auth()->user()->class;
+        $data = ['name' => $name, 'syllabus' => $this->model->syllabus, 'beltName' => $this->model->name, 'class' => $class];
+        return $this->respond($data);
     }
 }

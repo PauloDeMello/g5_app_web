@@ -7,24 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/syllabus.css">
     <title>Syllabus</title>
+
+    <script type="text/javascript" src="js/infoGetter.js"></script>
+    <script> 
+
+      var syllabusJsonPromise = getSyllabusJson(); 
+      syllabusJsonPromise.then((data) => {
+        updatePageElements(data);
+      });
+      
+    </script>
 </head>
 
   <body>
-    <h1> Welcome <?= $name ?> : <?= $class ?> </h1>
-    <div class="table-wrapper">
-        <table class="fl-table">
-            <thead>
-            <tr>
-                <th><?= $beltName ?> Belt Syllabus</th>
-            </tr>
-            </thead>
-            <tbody>
-              <?php foreach($syllabus as $technique): ?>
-                <tr>
-                    <td><?= $technique; ?></td>
-                </tr>
-              <?php endforeach; ?>
-        </table>
-    </div>
+    <h1 id="name"> </h1>
   </body>
 </html>

@@ -1,6 +1,11 @@
 <head>     
     <link rel="manifest" href="/manifest.json" crossorigin="use-credentials">
     <link rel="stylesheet" href="/css/navbar.css">
+
+    <script>
+        if ('serviceWorker' in navigator) {
+        }
+    </script>
 </head>
 
 

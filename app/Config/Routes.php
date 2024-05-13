@@ -16,4 +16,5 @@ $routes->get('login', 'LoginController::loginView');
 $routes->get('admin', 'Admin::index');
 $routes->get('logout', 'LoginController::logout_action');
 $routes->get('register', 'RegisterController::registerView');
+$routes->get('api/syllabus', 'Syllabus::getIndex');
 
