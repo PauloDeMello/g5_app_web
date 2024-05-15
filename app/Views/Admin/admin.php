@@ -11,5 +11,6 @@
 <body>
    <div class="topnav" id="myTopnav">
     <a href="logout">Logout</a>
+    <h1> Hi Admin </h1>
    </div>
 </body

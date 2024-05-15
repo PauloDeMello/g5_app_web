@@ -2,8 +2,12 @@
 
 namespace App\Controllers;
 
-class Admin extends RenderController
+use CodeIgniter\Shield\Traits\Viewable;
+
+class Admin extends BaseController
 {
+    use Viewable;  
+    
     public function index(): string
     {
         if(!auth()->user()->inGroup('admin'))
@@ -11,7 +15,7 @@ class Admin extends RenderController
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
 
-        return view('admin');
+        return $this->view(setting('Admin.views')['admin']);
     }
 
 }

@@ -56,6 +56,19 @@ self.addEventListener('activate', event => {
     event.waitUntil(self.clients.claim())
 })
 
+
+const precachedResources = ["/Views/offline.html", "/Views/templates/header.php", "/Views/templates/footer.php", "/css/navbar.css"];
+
+async function precache() {
+    const cache = await caches.open("pwa-cache");
+    return cache.addAll(precachedResources);
+}
+
+self.addEventListener("install", (event) => {
+    event.waitUntil(precache());
+});
+
+
 /**
  *  @Functional Fetch
  *  All network requests are being intercepted here.
@@ -65,8 +78,20 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
     // Skip some of cross-origin requests, like those for Google Analytics.
     if (event.request.url.indexOf('/login') !== -1 || event.request.url.indexOf('/logout') !== -1) {
-        console.log("Yeehaw");
-        return false;
+        event.respondWith(caches
+            .match(event.request)
+            .then(function (response) {
+                // Fall back to network
+                return response || fetch(event.request);
+            })
+            .catch(function () {
+                // If both fail, show a generic fallback:
+                return caches.match('/Views/offline.html');
+                // However, in reality you'd have many different
+                // fallbacks, depending on URL and headers.
+                // Eg, a fallback silhouette image for avatars.
+            }),
+        );
     }
     if (HOSTNAME_WHITELIST.indexOf(new URL(event.request.url).hostname) > -1) {
         // Stale-while-revalidate
@@ -84,14 +109,14 @@ self.addEventListener('fetch', event => {
         event.respondWith(
             Promise.race([fetched.catch(_ => cached), cached])
                 .then(resp => resp || fetched)
-                .catch(_ => { /* eat any errors */ })
+                .catch(_ => { return caches.match('/Views/offline.html'); })
         )
 
         // Update the cache with the version we fetched (only for ok status)
         event.waitUntil(
             Promise.all([fetchedCopy, caches.open("pwa-cache")])
                 .then(([response, cache]) => response.ok && cache.put(event.request, response))
-                .catch(_ => { /* eat any errors */ })
+                .catch(_ => { return caches.match('/Views/offline.html'); })
         )
     }
 })

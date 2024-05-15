@@ -1,7 +1,6 @@
 <head>     
     <link rel="manifest" href="/manifest.json" crossorigin="use-credentials">
     <link rel="stylesheet" href="/css/navbar.css">
-    <link rel="stylesheet" href="/css/font-awesome.min.css">
 
     <script>
          if ("serviceWorker" in navigator) {
@@ -38,7 +37,7 @@
     <a href="syllabus">Syllabus</a>
     <a href="logout">Logout</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <i class="fa fa-bars"></i>
+        <i class="gg-menu"></i>
     </a>
    </div>
 
