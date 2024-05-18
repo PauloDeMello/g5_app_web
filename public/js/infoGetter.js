@@ -48,12 +48,12 @@ const GetInfoJson = async () => {
 }
 
 const UpdateHomePageElements = (data) => {
-    document.getElementById('name').innerHTML = `Welcome ${data.name} : ${data.class}`;
+    document.getElementById('name').innerHTML = `Welcome ${data.name}`;
 }
 
 
 const UpdateSyllabusPageElements = (data) => {
-    document.getElementById('name').innerHTML = `Welcome ${data.name} : ${data.class}`;
+    document.getElementById('name').innerHTML = `${data.name}`;
     document.body.appendChild(genTable(data.syllabus, data.beltName));
 }
 

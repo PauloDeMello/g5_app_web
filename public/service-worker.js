@@ -57,8 +57,8 @@ self.addEventListener('activate', event => {
 })
 
 
-const precachedResources = ["/Views/offline.html", "/Views/templates/header.php", "/Views/templates/footer.php", "/css/navbar.css"];
-
+const precachedResources = ["/Views/offline.html", "/Views/templates/header.php", "/Views/templates/footer.php", "/images/g5-logo.webp", "/images/g5-logo-crop.webp"];
+//, "/css/general.css"
 async function precache() {
     const cache = await caches.open("pwa-cache");
     return cache.addAll(precachedResources);
@@ -76,47 +76,37 @@ self.addEventListener("install", (event) => {
  *  void respondWith(Promise<Response> r)
  */
 self.addEventListener('fetch', event => {
+
     // Skip some of cross-origin requests, like those for Google Analytics.
     if (event.request.url.indexOf('/login') !== -1 || event.request.url.indexOf('/logout') !== -1) {
-        event.respondWith(caches
-            .match(event.request)
-            .then(function (response) {
-                // Fall back to network
-                return response || fetch(event.request);
-            })
+        event.respondWith(fetch(event.request)
             .catch(function () {
-                // If both fail, show a generic fallback:
+                // Delete cookies and cache
+                console.log("here");
+                document.cookie = `ci_session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/${window.location.hostname};`;
+                caches.delete("pwa-cache");
                 return caches.match('/Views/offline.html');
-                // However, in reality you'd have many different
-                // fallbacks, depending on URL and headers.
-                // Eg, a fallback silhouette image for avatars.
             }),
         );
     }
+
+    event.respondWith(fetch(event.request));
+    return;
+
     if (HOSTNAME_WHITELIST.indexOf(new URL(event.request.url).hostname) > -1) {
-        // Stale-while-revalidate
-        // similar to HTTP's stale-while-revalidate: https://www.mnot.net/blog/2007/12/12/stale
-        // Upgrade from Jake's to Surma's: https://gist.github.com/surma/eb441223daaedf880801ad80006389f1
-        const cached = caches.match(event.request)
-        const fixedUrl = getFixedUrl(event.request)
-        const fetched = fetch(fixedUrl, { cache: 'no-store' })
-        const fetchedCopy = fetched.then(resp => resp.clone())
 
-        // Call respondWith() with whatever we get first.
-        // If the fetch fails (e.g disconnected), wait for the cache.
-        // If there’s nothing in cache, wait for the fetch.
-        // If neither yields a response, return offline pages.
-        event.respondWith(
-            Promise.race([fetched.catch(_ => cached), cached])
-                .then(resp => resp || fetched)
-                .catch(_ => { return caches.match('/Views/offline.html'); })
-        )
 
-        // Update the cache with the version we fetched (only for ok status)
-        event.waitUntil(
-            Promise.all([fetchedCopy, caches.open("pwa-cache")])
-                .then(([response, cache]) => response.ok && cache.put(event.request, response))
-                .catch(_ => { return caches.match('/Views/offline.html'); })
-        )
+        //Stale while revalidate method 
+        event.respondWith(caches.open("pwa-cache").then((cache) => {
+            return cache.match(event.request).then((cachedResponse) => {
+                const fetchedResponse = fetch(event.request).then((networkResponse) => {
+                    cache.put(event.request, networkResponse.clone());
+
+                    return networkResponse;
+                });
+
+                return cachedResponse || fetchedResponse;
+            });
+        }));
     }
 })

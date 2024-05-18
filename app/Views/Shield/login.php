@@ -7,7 +7,9 @@
     <div class="container d-flex justify-content-center p-5">
         <div class="card col-12 col-md-5 shadow-sm">
             <div class="card-body">
-                <h5 class="card-title mb-5"><?= lang('Auth.login') ?></h5>
+                <img src="/images/g5-logo-crop.webp" class="card-img-top"></img>
+                <br>
+                <h5 class="card-title mb-5"><?= "G5 Martial Arts Login" ?></h5>
 
                 <?php if (session('error') !== null) : ?>
                     <div class="alert alert-danger" role="alert"><?= session('error') ?></div>
@@ -32,8 +34,9 @@
                     <?= csrf_field() ?>
 
                     <!-- Email -->
-                    <div class="mb-2">
-                        <input type="text" class="form-control" name="username" placeholder="<?= lang('Auth.username') ?>" value="<?= old('username') ?>" required />
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingUsernameInput" name="username" inputmode="text" placeholder="<?= lang('Auth.username') ?>" required>
+                        <label for="floatingUsernameInput"><?= lang('Auth.username') ?></label>
                     </div>
 
                     <!-- Password -->
