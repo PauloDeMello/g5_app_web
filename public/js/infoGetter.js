@@ -65,10 +65,12 @@ function genTable(syllabus, beltName) {
     var table = document.createElement("table");
     table.className = 'fl-table';
 
-
+    //TODO: Set up colour array for belts
     var header = table.createTHead();
     var beltNameRow = header.insertRow(0);
     var th = document.createElement("th");
+    th.style.backgroundColor = '#fdfdfd';
+    th.style.color = '#101213';
     th.innerText = `${beltName} Belt Syllabus`;
     beltNameRow.appendChild(th);
 

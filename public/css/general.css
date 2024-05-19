@@ -51,7 +51,7 @@ h2 {
     width: 100%;
     max-width: 100%;
     white-space: nowrap;
-    background-color: #191c1e;
+    background-color: #191c1e00;
     border-radius: 0px 0px 10px 10px;
     border-spacing: 0;
 }
@@ -75,11 +75,39 @@ h2 {
 
 .fl-table thead th:nth-child(odd) {
     color: #ffffff;
-    background: #101213;
+    background: #070808;
 }
 
 .fl-table tr:nth-child(even) {
     background: #101213;
+}
+
+.fl-table tr:nth-child(odd) {
+    background: #191c1e;
+}
+
+.fl-table th:first-of-type {
+    border-top-left-radius: 10px;
+}
+
+.fl-table th:last-of-type {
+    border-top-right-radius: 10px;
+}
+
+.fl-table th:first-of-type {
+    border-bottom-left-radius: 10px;
+}
+
+.fl-table th:last-of-type {
+    border-bottom-right-radius: 10px;
+}
+
+.fl-table tr:first-of-type td:first-of-type {
+    border-top-left-radius: 10px;
+}
+
+.fl-table tr:first-of-type td:last-of-type {
+    border-top-right-radius: 10px;
 }
 
 .fl-table tr:last-of-type td:first-of-type {

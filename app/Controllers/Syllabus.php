@@ -27,6 +27,7 @@ class Syllabus extends ResourceController
 
     public function getIndex()
     {
+        //TODO: Set up correct belt -> Syllabus
         $beltID = auth()->user()->belt;
         $syllabus = $this->model->ReturnSyllabusArray($beltID);
         $this->model->SetupBeltModel($beltID);
