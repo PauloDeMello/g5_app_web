@@ -11,7 +11,7 @@
 
 <body>
     <div class="topnav" id="myTopnav">
-        <a href="announcements">Announcements</a>
+        <a href="annoucements">Announcements</a>
         <a href="logout">Logout</a>
     </div>
     <h1> Hi Admin </h1>

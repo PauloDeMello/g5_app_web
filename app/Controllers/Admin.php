@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Controllers\Admin;
+namespace App\Controllers;
 
 use CodeIgniter\Shield\Traits\Viewable;
 use App\Models\AnnouncementModel;
-use App\Controllers\BaseController;
 
 class Admin extends BaseController
 {

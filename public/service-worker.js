@@ -79,14 +79,22 @@ self.addEventListener('fetch', event => {
 
     // Skip some of cross-origin requests, like those for Google Analytics.
     if (event.request.url.indexOf('/login') !== -1 || event.request.url.indexOf('/logout') !== -1) {
-        event.respondWith(fetch(event.request)
-            .catch(function () {
-                // Delete cookies and cache
-                console.log("here");
-                document.cookie = `ci_session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/${window.location.hostname};`;
-                caches.delete("pwa-cache");
-                return caches.match('/Views/offline.html');
-            }),
+        event.respondWith(
+            function () {
+                // Delete cookies and cache if logging out
+                if (event.request.url.indexOf('/logout') !== -1) {
+                    document.cookie = `ci_session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/${window.location.hostname};`;
+                    caches.delete("pwa-cache");
+                }
+                fetch(event.request);
+            }
+                .catch(function () {
+                    // Delete cookies and cache and return offline page.
+                    console.log("here");
+                    document.cookie = `ci_session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/${window.location.hostname};`;
+                    caches.delete("pwa-cache");
+                    return caches.match('/Views/offline.html');
+                }),
         );
     }
 

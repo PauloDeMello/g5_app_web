@@ -11,7 +11,7 @@
     <script type="text/javascript" src="js/infoGetter.js"></script>
     <script> 
 
-      var syllabusJsonPromise = GetSyllabusJson(); 
+      var syllabusJsonPromise = GetJson("syllabus"); 
       syllabusJsonPromise.then((data) => {
         UpdateSyllabusPageElements(data);
       });

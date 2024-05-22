@@ -11,15 +11,36 @@
     <script type="text/javascript" src="js/infoGetter.js"></script>
     <script> 
 
-      var infoJsonPromise = GetInfoJson(); 
+      var infoJsonPromise = GetJson("info"); 
       infoJsonPromise.then((data) => {
-        UpdateHomePageElements(data);
+        UpdateHomePageInfo(data);
+      });
+
+    </script>
+
+    <script type="text/javascript" src="js/infoGetter.js"></script>
+    <script> 
+
+      var AnnouncementsJsonPromise = GetJson("announcements"); 
+      AnnouncementsJsonPromise.then((data) => {
+        UpdateHomePageAnnouncements(data);
       });
 
     </script>
 </head>
 
 <body>
-    <h1 id="name"> </h1>
+    <h1 id="name" ></h1>
+    <div class="col-md-6" style="margin: auto; width: 50%;">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <h3 id="ATitle"></h3> 
+          <hr>
+          <text id="AMessage"></text>
+          <hr>
+          <h7 id="ADate"></h7>
+        </div>
+      </div>
+    </div>
 </body>
 </html>

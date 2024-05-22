@@ -29,26 +29,26 @@ const GetSyllabusJsonCacheOrNetwork = async () => {
         })
 }
 
-const GetSyllabusJson = async () => {
-    const response = await fetch(document.location.origin + "/api/syllabus");
-    console.log(document.location.origin + "/api/syllabus");
-    const beltJson = await response.json(); //extract JSON from the http response
+const GetJson = async (route) => {
+    const response = await fetch(document.location.origin + `/api/${route}`);
+    console.log(document.location.origin + `/api/${route}`);
+    const json = await response.json(); //extract JSON from the http response
 
-    return beltJson
+    return json
     // do something with myJson
 }
 
-const GetInfoJson = async () => {
-    const response = await fetch(document.location.origin + "/api/info");
-    console.log(document.location.origin + "/api/info");
-    const infoJson = await response.json(); //extract JSON from the http response
-
-    return infoJson
-    // do something with myJson
-}
-
-const UpdateHomePageElements = (data) => {
+const UpdateHomePageInfo = (data) => {
     document.getElementById('name').innerHTML = `Welcome ${data.name}`;
+}
+
+const UpdateHomePageAnnouncements = (data) => {
+    document.getElementById('ATitle').innerHTML = data.title;
+    document.getElementById('AMessage').innerText = data.message;
+    const date = new Date(data.timestamp);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = new Intl.DateTimeFormat('en-UK', options).format(date);
+    document.getElementById('ADate').innerText = formattedDate;
 }
 
 
