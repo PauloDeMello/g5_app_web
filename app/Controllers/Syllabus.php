@@ -29,7 +29,6 @@ class Syllabus extends ResourceController
     {
         //TODO: Set up correct belt -> Syllabus
         $beltID = auth()->user()->belt;
-        $syllabus = $this->model->ReturnSyllabusArray($beltID);
         $this->model->SetupBeltModel($beltID);
         $name = auth()->user()->name;
         $class = auth()->user()->class;

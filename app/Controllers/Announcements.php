@@ -9,7 +9,7 @@ use App\Models\AnnouncementModel;
 class Announcements extends ResourceController
 {
     use Viewable;  
-    
+
     protected $model;
     // There used to be a bug in version 4.0.2 now fixed in v4.0.3. No issues in json return
     protected $format    = 'json';
@@ -21,7 +21,7 @@ class Announcements extends ResourceController
     }
     
     
-    public function index(): string
+    public function index()
     {
         if(!auth()->user()->inGroup('admin'))
         {
@@ -42,7 +42,9 @@ class Announcements extends ResourceController
                 echo "Post Failed";
             }
         }
-        return $this->view(setting('Admin.views')['announcements']);
+        echo $this->view(setting('Admin.views')['header']);
+        echo $this->view(setting('Admin.views')['announcements']);
+        echo $this->view(setting('Admin.views')['footer']);
     }
 
     

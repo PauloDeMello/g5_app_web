@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class BeltModel extends Model
 {
-    protected $table      = 'beltdata';
+    protected $table      = 'syllabusdata';
     protected $primaryKey = 'id';
     protected $beltID = 'beltID';
     protected $name = 'name';
@@ -17,26 +17,27 @@ class BeltModel extends Model
         $this->db = \Config\Database::connect();
     }
 
-    public function ReturnSyllabusArray(int $beltId)
+    public function ReturnSyllabusArray(string $syllabusString)
     {
-        $sql = 
-        "SELECT id, beltID, syllabus FROM beltdata WHERE beltID=$beltId";
-        $result = $this->query($sql);
 
-        if(count($result->getResultArray()) > 0) 
+        $syllabusArray = explode(" ,. ", $syllabusString);
+
+        $formattedSyllabusArray = [];
+
+        foreach ($syllabusArray as $value)
         {
-            $userResult = $result->getrow();
+            
+            $valueArray = explode(" | ", $value);
+            $formattedSyllabusArray[] = $valueArray;
         }
 
-        $syllabusString = $userResult->syllabus;
-
-        return explode(" ,. ", $syllabusString);
+        return $formattedSyllabusArray;
     }
 
     public function SetupBeltModel(int $beltId)
     {
         $sql = 
-        "SELECT id, beltID, name, syllabus FROM beltdata WHERE beltID=$beltId";
+        "SELECT id, beltID, name, syllabus FROM $this->table WHERE beltID=$beltId";
         $result = $this->query($sql);
 
         if(count($result->getResultArray()) > 0) 
@@ -45,7 +46,7 @@ class BeltModel extends Model
         }
 
         $syllabusString = $userResult->syllabus;
-        $this->syllabus = explode(" ,. ", $syllabusString);
+        $this->syllabus = $this->ReturnSyllabusArray($syllabusString);
         $this->name = $userResult->name;
     }
 }

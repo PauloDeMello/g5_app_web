@@ -10,12 +10,5 @@
 </head>
 
 <body>
-    <div class="topnav" id="myTopnav">
-        <a href="annoucements">Announcements</a>
-        <a href="logout">Logout</a>
-    </div>
     <h1> Hi Admin </h1>
-    </div>
-</div>
-</div>
 </body

@@ -31,7 +31,7 @@
 
 <body>
     <h1 id="name" ></h1>
-    <div class="col-md-6" style="margin: auto; width: 50%;">
+    <div class="col-md-6" style="margin: auto; width: 80%;">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
           <h3 id="ATitle"></h3> 

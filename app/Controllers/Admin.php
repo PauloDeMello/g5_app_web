@@ -9,7 +9,7 @@ class Admin extends BaseController
 {
     use Viewable;  
     
-    public function index(): string
+    public function index()
     {
         if(!auth()->user()->inGroup('admin'))
         {
@@ -17,7 +17,9 @@ class Admin extends BaseController
         }
 
 
-        return $this->view(setting('Admin.views')['admin']);
+        echo $this->view(setting('Admin.views')['header']);
+        echo $this->view(setting('Admin.views')['admin']);
+        echo $this->view(setting('Admin.views')['footer']);
     }
 
 }

@@ -10,10 +10,6 @@
 </head>
 
 <body>
-    <div class="topnav" id="myTopnav">
-        <a href="admin">Home</a>
-        <a href="logout">Logout</a>
-    </div>
     <h1> Hi Admin </h1>
     <div class="container d-flex justify-content-center p-5">
         <div class="card col-12 col-md-5 shadow-sm">

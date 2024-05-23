@@ -63,27 +63,29 @@ h2 {
     color: #dfdfdf;
 }
 
+
+
 .fl-table td {
     font-size: 85%;
+    text-align: left;
+    padding: 8px;
+    color: #dfdfdf;
 }
 
 .fl-table thead th {
-    color: #ffffff;
+    color: #dfdfdf;
     background: #4FC3A1;
 }
 
-
 .fl-table thead th:nth-child(odd) {
-    color: #ffffff;
-    background: #070808;
+    color: #dfdfdf;
+    background: transparent;
 }
 
-.fl-table tr:nth-child(even) {
-    background: #101213;
-}
-
-.fl-table tr:nth-child(odd) {
-    background: #191c1e;
+.f1-table,
+td {
+    border: 1px solid;
+    border-color: #dfdfdf;
 }
 
 .fl-table th:first-of-type {
