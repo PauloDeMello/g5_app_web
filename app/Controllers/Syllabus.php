@@ -28,11 +28,12 @@ class Syllabus extends ResourceController
     public function getIndex()
     {
         //TODO: Set up correct belt -> Syllabus
-        $beltID = auth()->user()->belt;
-        $this->model->SetupBeltModel($beltID);
+        $belt = auth()->user()->belt;
+        echo($belt);
+        $this->model->SetupBeltModel($belt);
         $name = auth()->user()->name;
         $class = auth()->user()->class;
-        $data = ['name' => $name, 'syllabus' => $this->model->syllabus, 'beltName' => $this->model->name, 'class' => $class];
+        $data = ['name' => $name, 'syllabus' => $this->model->syllabus, 'beltName' => $this->model->belt, 'class' => $class];
         return $this->respond($data);
     }
 }

@@ -8,8 +8,7 @@ class BeltModel extends Model
 {
     protected $table      = 'syllabusdata';
     protected $primaryKey = 'id';
-    protected $beltID = 'beltID';
-    protected $name = 'name';
+    protected $belt = 'belt';
     protected $syllabus = 'syllabus';
 
     public function __construct()
@@ -34,10 +33,10 @@ class BeltModel extends Model
         return $formattedSyllabusArray;
     }
 
-    public function SetupBeltModel(int $beltId)
+    public function SetupBeltModel(string $belt)
     {
         $sql = 
-        "SELECT id, beltID, name, syllabus FROM $this->table WHERE beltID=$beltId";
+        "SELECT id, belt, syllabus FROM $this->table WHERE belt='$belt'";
         $result = $this->query($sql);
 
         if(count($result->getResultArray()) > 0) 
@@ -47,6 +46,6 @@ class BeltModel extends Model
 
         $syllabusString = $userResult->syllabus;
         $this->syllabus = $this->ReturnSyllabusArray($syllabusString);
-        $this->name = $userResult->name;
+        $this->name = $userResult->belt;
     }
 }
