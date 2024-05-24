@@ -1,3 +1,22 @@
+:root {
+    --yellow-tag-color: #FBDF5A;
+    --yellow-color: #FBDF5A;
+    --orange-tag-color: #E59B3C;
+    --orange-color: #E59B3C;
+    --green-tag-color: #2f6358;
+    --green-color: #2f6358;
+    --purple-tag-color: #61346B;
+    --purple-color: #61346B;
+    --blue-tag-color: #023047;
+    --blue-color: #023047;
+    --brown-tag-color: #241200;
+    --brown-double-tag-color: #241200;
+    --brown-color: #241200;
+    --black-tag-color: #0f0e12;
+    --black-double-tag-color: #0f0e12;
+    --black-color: #0f0e12;
+}
+
 * {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -50,7 +69,6 @@ h2 {
     border-collapse: collapse;
     width: 100%;
     max-width: 100%;
-    white-space: nowrap;
     background-color: #191c1e00;
     border-radius: 0px 0px 10px 10px;
     border-spacing: 0;

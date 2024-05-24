@@ -16,7 +16,7 @@ class BeltModel extends Model
         $this->db = \Config\Database::connect();
     }
 
-    public function ReturnSyllabusArray(string $syllabusString)
+    public function ReturnSyllabusArrayBeltPair(string $belt, string $syllabusString)
     {
 
         $syllabusArray = explode(" ,. ", $syllabusString);
@@ -30,22 +30,30 @@ class BeltModel extends Model
             $formattedSyllabusArray[] = $valueArray;
         }
 
-        return $formattedSyllabusArray;
+        return [$belt, $formattedSyllabusArray];
     }
 
-    public function SetupBeltModel(string $belt)
+    public function SetupBeltModel(string $currentBelt, array $belts)
     {
-        $sql = 
-        "SELECT id, belt, syllabus FROM $this->table WHERE belt='$belt'";
-        $result = $this->query($sql);
+        $formattedSyllabusArray = [];
 
-        if(count($result->getResultArray()) > 0) 
+        foreach($belts as $belt)
         {
-            $userResult = $result->getrow();
-        }
+            $sql = 
+            "SELECT id, belt, syllabus FROM $this->table WHERE belt='$belt'";
+            $result = $this->query($sql);
 
-        $syllabusString = $userResult->syllabus;
-        $this->syllabus = $this->ReturnSyllabusArray($syllabusString);
-        $this->name = $userResult->belt;
+            if(count($result->getResultArray()) > 0) 
+            {
+                $userResult = $result->getrow();
+            }
+
+            $syllabusString = $userResult->syllabus;
+
+            $formattedSyllabusArray[] = $this->ReturnSyllabusArrayBeltPair($belt, $syllabusString);
+        } 
+        
+        $this->syllabus = $formattedSyllabusArray;
+        $this->belt = $currentBelt;
     }
 }

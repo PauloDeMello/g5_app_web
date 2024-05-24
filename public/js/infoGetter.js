@@ -54,7 +54,14 @@ const UpdateHomePageAnnouncements = (data) => {
 
 const UpdateSyllabusPageElements = (data) => {
     document.getElementById('name').innerHTML = `${data.name}`;
-    document.body.appendChild(genTable(data.syllabus, data.beltName));
+
+    data.syllabus.forEach(createTables);
+
+    function createTables(beltSyllabusPair) {
+        document.body.appendChild(genTable(beltSyllabusPair[1], beltSyllabusPair[0]));
+        linebreak = document.createElement("br");
+        document.body.appendChild(linebreak);
+    }
 }
 
 function genTable(syllabus, beltName) {
@@ -69,8 +76,8 @@ function genTable(syllabus, beltName) {
     var header = table.createTHead(-1);
     var beltNameRow = header.insertRow(-1);
     var th = document.createElement("th");
-    th.style.backgroundColor = '#fdfdfd';
-    th.style.color = '#101213';
+    th.style.color = '#fdfdfd';
+    th.style.backgroundColor = convertBeltToColorVarString(beltName);
     th.innerText = `${beltName} Belt Syllabus`;
     th.colSpan = 2;
     beltNameRow.appendChild(th);
@@ -84,7 +91,6 @@ function genTable(syllabus, beltName) {
     headerRow.appendChild(th);
 
     var body = table.createTBody();
-
 
     createSyllabusTableEntries(syllabus, body);
 
@@ -131,4 +137,20 @@ function createLRSyllabusRow(body, item) {
     var cell3 = row2.insertCell(-1);
     var techniqueSide = "R"
     cell3.innerHTML = (`${techniqueSide}`);
+}
+
+function convertBeltToColorVarString(belt) {
+    var wordArray = belt.split(" ");
+    var beltString = "--";
+    wordArray.forEach(setUpArrayString);
+    function setUpArrayString(word) {
+        console.log(word);
+        beltString = beltString.concat(`${word}-`)
+    }
+
+    beltString = beltString.toLocaleLowerCase();
+
+    console.log(`var(${beltString}color)`);
+
+    return `var(${beltString}color)`;
 }
