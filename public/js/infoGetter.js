@@ -61,6 +61,10 @@ const UpdateSyllabusPageElements = (data) => {
         document.body.appendChild(genTable(beltSyllabusPair[1], beltSyllabusPair[0]));
         linebreak = document.createElement("br");
         document.body.appendChild(linebreak);
+        linebreak = document.createElement("br");
+        document.body.appendChild(linebreak);
+        linebreak = document.createElement("br");
+        document.body.appendChild(linebreak);
     }
 }
 

@@ -87,14 +87,13 @@ self.addEventListener('fetch', event => {
                     caches.delete("pwa-cache");
                 }
                 fetch(event.request);
-            }
-                .catch(function () {
-                    // Delete cookies and cache and return offline page.
-                    console.log("here");
-                    document.cookie = `ci_session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/${window.location.hostname};`;
-                    caches.delete("pwa-cache");
-                    return caches.match('/Views/offline.html');
-                }),
+            }.catch(function () {
+                // Delete cookies and cache and return offline page.
+                console.log("here");
+                document.cookie = `ci_session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/${window.location.hostname};`;
+                caches.delete("pwa-cache");
+                return caches.match('/Views/offline.html');
+            }),
         );
     }
 

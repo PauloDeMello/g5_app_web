@@ -1,20 +1,20 @@
 :root {
-    --yellow-tag-color: #FBDF5A;
-    --yellow-color: #FBDF5A;
+    --yellow-tag-color: #F6E271;
+    --yellow-color: #F6E271;
     --orange-tag-color: #E59B3C;
     --orange-color: #E59B3C;
     --green-tag-color: #2f6358;
     --green-color: #2f6358;
     --purple-tag-color: #61346B;
     --purple-color: #61346B;
-    --blue-tag-color: #023047;
-    --blue-color: #023047;
-    --brown-tag-color: #241200;
-    --brown-double-tag-color: #241200;
-    --brown-color: #241200;
-    --black-tag-color: #0f0e12;
-    --black-double-tag-color: #0f0e12;
-    --black-color: #0f0e12;
+    --blue-tag-color: #003152;
+    --blue-color: #003152;
+    --brown-tag-color: #291e1e;
+    --brown-double-tag-color: #291e1e;
+    --brown-color: #291e1e;
+    --black-tag-color: #060606;
+    --black-double-tag-color: #060606;
+    --black-color: #060606;
 }
 
 * {

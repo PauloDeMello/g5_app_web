@@ -33,22 +33,24 @@
 <body>
    <style> .navbar-brand {font-family: edo-sz} </style>
     <div>    
-    <nav class="navbar navbar-expand-lg nav-fill w-80 navbar-dark" style="background-color: #191c1e;">
-    <a class="navbar-brand">
+    <nav class="navbar navbar-expand-lg nav-fill w-80 navbar-dark" style="background-color: #191c1e; padding-right: 5px;">
+    <a class="navbar-brand" style="padding-left: 30px;">
     <img src="/images/g5-logo-crop.webp" width="55" height="55" alt=""></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon" > </span>
     </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav" style="padding-left: 5px;">
             <li class="nav-item">
                 <a class="nav-link" href="home">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="syllabus">Syllabus</a>
             </li>
+            </ul>
+            <ul class="navbar-nav  ms-auto" style="padding-left: 55px; padding-right: 50px;">
             <li class="nav-item">
-                <a class="nav-link" href="logout">Logout</a>
+                <a class="nav-link " href="logout">Logout</a>
             </li>
             </ul>
         </div>
