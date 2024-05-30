@@ -49,7 +49,7 @@
     ],
     "orientation": "any",
     "id": "/?source=pwa",
-    "start_url": "/?source=pwa",
+    "start_url": "/home",
     "background_color": "#3367D6",
     "display": "standalone",
     "scope": "/",

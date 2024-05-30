@@ -29,48 +29,70 @@ const GetSyllabusJsonCacheOrNetwork = async () => {
         })
 }
 
-const GetSyllabusJson = async () => {
-    const response = await fetch(document.location.origin + "/api/syllabus");
-    console.log(document.location.origin + "/api/syllabus");
-    const beltJson = await response.json(); //extract JSON from the http response
+const GetJson = async (route) => {
+    const response = await fetch(document.location.origin + `/api/${route}`);
+    console.log(document.location.origin + `/api/${route}`);
+    const json = await response.json(); //extract JSON from the http response
 
-    return beltJson
+    return json
     // do something with myJson
 }
 
-const GetInfoJson = async () => {
-    const response = await fetch(document.location.origin + "/api/info");
-    console.log(document.location.origin + "/api/info");
-    const infoJson = await response.json(); //extract JSON from the http response
-
-    return infoJson
-    // do something with myJson
+const UpdateHomePageInfo = (data) => {
+    document.getElementById('name').innerHTML = `Welcome ${data.name}`;
 }
 
-const UpdateHomePageElements = (data) => {
-    document.getElementById('name').innerHTML = `Welcome ${data.name} : ${data.class}`;
+const UpdateHomePageAnnouncements = (data) => {
+    document.getElementById('ATitle').innerHTML = data.title;
+    document.getElementById('AMessage').innerText = data.message;
+    const date = new Date(data.timestamp);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = new Intl.DateTimeFormat('en-UK', options).format(date);
+    document.getElementById('ADate').innerText = formattedDate;
 }
 
 
 const UpdateSyllabusPageElements = (data) => {
-    document.getElementById('name').innerHTML = `Welcome ${data.name} : ${data.class}`;
-    document.body.appendChild(genTable(data.syllabus, data.beltName));
+    document.getElementById('name').innerHTML = `${data.name}`;
+
+    data.syllabus.forEach(createTables);
+
+    function createTables(beltSyllabusPair) {
+        document.body.appendChild(genTable(beltSyllabusPair[1], beltSyllabusPair[0]));
+        linebreak = document.createElement("br");
+        document.body.appendChild(linebreak);
+        linebreak = document.createElement("br");
+        document.body.appendChild(linebreak);
+        linebreak = document.createElement("br");
+        document.body.appendChild(linebreak);
+    }
 }
 
 function genTable(syllabus, beltName) {
-    syllabus.reverse();
+    console.log(syllabus);
     var tableWrapper = document.createElement("div");
     tableWrapper.className = "table-wrapper";
 
     var table = document.createElement("table");
     table.className = 'fl-table';
 
-
-    var header = table.createTHead();
-    var beltNameRow = header.insertRow(0);
+    //TODO: Set up colour array for belts
+    var header = table.createTHead(-1);
+    var beltNameRow = header.insertRow(-1);
     var th = document.createElement("th");
+    th.style.color = '#fdfdfd';
+    th.style.backgroundColor = convertBeltToColorVarString(beltName);
     th.innerText = `${beltName} Belt Syllabus`;
+    th.colSpan = 2;
     beltNameRow.appendChild(th);
+
+    var header = table.createTHead(-1);
+    var headerRow = header.insertRow(-1);
+    var th = document.createElement("th");
+    th.innerText = `Technique`;
+    th.colSpan = 2;
+    th.style.fontWeight = "normal";
+    headerRow.appendChild(th);
 
     var body = table.createTBody();
 
@@ -86,10 +108,53 @@ function createSyllabusTableEntries(syllabus, body) {
     syllabus.forEach(setupTableEntry);
 
     function setupTableEntry(item) {
-        var row = body.insertRow(0);
-        var cell = row.insertCell(0);
-        cell.innerHTML = (`${item}`);
+        if (item[1] == "N") {
+            createSyllabusRow(body, item);
+        }
+        else {
+            createLRSyllabusRow(body, item);
+        }
         //cell.setAttribute("font-size", "50%")
     }
 }
 
+function createSyllabusRow(body, item) {
+    var row = body.insertRow(-1);
+    var cell = row.insertCell(0);
+    cell.innerHTML = (`${item[0]}`);
+    var cell2 = row.insertCell(1);
+    var techniqueSide = "N/A"
+    cell2.innerHTML = (`${techniqueSide}`);
+}
+
+function createLRSyllabusRow(body, item) {
+
+    var row = body.insertRow(-1);
+    var cell1 = row.insertCell(-1);
+    cell1.innerHTML = (`${item[0]}`);
+    cell1.rowSpan = 2;
+    var cell2 = row.insertCell(-1);
+    var techniqueSide = "L"
+    cell2.innerHTML = (`${techniqueSide}`);
+
+    var row2 = body.insertRow(-1);
+    var cell3 = row2.insertCell(-1);
+    var techniqueSide = "R"
+    cell3.innerHTML = (`${techniqueSide}`);
+}
+
+function convertBeltToColorVarString(belt) {
+    var wordArray = belt.split(" ");
+    var beltString = "--";
+    wordArray.forEach(setUpArrayString);
+    function setUpArrayString(word) {
+        console.log(word);
+        beltString = beltString.concat(`${word}-`)
+    }
+
+    beltString = beltString.toLocaleLowerCase();
+
+    console.log(`var(${beltString}color)`);
+
+    return `var(${beltString}color)`;
+}

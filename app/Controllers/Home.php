@@ -25,7 +25,7 @@ class Home extends ResourceController
         if(auth()->user()->inGroup('admin'))
         {
             echo "user is admin";
-            return redirect('admin');
+            return redirect()->route('admin');
         }
 
         echo view('templates/header');
