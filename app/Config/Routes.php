@@ -21,5 +21,8 @@ $routes->get('register', 'RegisterController::registerView');
 $routes->get('api/info', 'Home::getIndex');
 $routes->get('api/syllabus', 'Syllabus::getIndex');
 $routes->get('api/announcements', 'Announcements::getIndex');
+$routes->get('profile', 'Profile::index');          // Add this line.
+
+$routes->post('profile/upload', 'Profile::upload'); // Add this line.
 
 
