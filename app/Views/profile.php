@@ -11,9 +11,9 @@
     <script type="text/javascript" src="js/infoGetter.js"></script>
     <script> 
 
-      var syllabusJsonPromise = GetJson("syllabus"); 
-      syllabusJsonPromise.then((data) => {
-        UpdateSyllabusPageElements(data);
+      var profileJsonPromise = GetJson("profile"); 
+      profileJsonPromise.then((data) => {
+        UpdateProfilePageElements(data);
       });
       
     </script>
@@ -23,7 +23,6 @@
   <?php foreach ($errors as $error): ?>
       <li><?= esc($error) ?></li>
   <?php endforeach ?>
-  <?= helper('form'); ?>
   <?= form_open_multipart('profile/upload'); ?>
       <input type="file" name="userfile" size="20">
       <br><br>
