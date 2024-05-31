@@ -38,6 +38,16 @@ const GetJson = async (route) => {
     // do something with myJson
 }
 
+const GetImage = async (route) => {
+    const response = await fetch(document.location.origin + `/api/${route}`);
+    console.log(document.location.origin + `/api/${route}`);
+    const imgBlob = await response.blob();
+
+    const urlCreator = window.URL || window.webkitURL;
+
+    return urlCreator.createObjectURL(imgBlob);
+}
+
 const UpdateHomePageInfo = (data) => {
     document.getElementById('name').innerHTML = `Welcome ${data.name}`;
 }
@@ -51,6 +61,65 @@ const UpdateHomePageAnnouncements = (data) => {
     document.getElementById('ADate').innerText = formattedDate;
 }
 
+const UpdateProfilePicElement = (data) => {
+    document.getElementById('profile_picture').src = data;
+}
+
+const UpdateProfilePageElements = (data) => {
+    document.getElementById('name').innerHTML = `${data.name}`;
+
+    data.belt_grades.forEach(createTable);
+
+    function createTable(belt_grade) {
+        document.body.appendChild(genProfileTable(belt_grade));
+    }
+}
+
+function genProfileTable(belt_grade) {
+    console.log(belt_grade);
+    var tableWrapper = document.createElement("div");
+    tableWrapper.className = "table-wrapper";
+
+    var table = document.createElement("table");
+    table.className = 'fl-table';
+
+    //TODO: Set up colour array for belts
+
+    var header = table.createTHead(-1);
+    var headerRow = header.insertRow(-1);
+    var th = document.createElement("th");
+    th.innerText = `Grading Record`;
+    th.colSpan = 3;
+    th.style.color = '#fdfdfd';
+    th.style.backgroundColor = '#191c1e';
+    headerRow.appendChild(th);
+
+    var body = table.createTBody();
+
+    createProfileEntries(belt_grade, body);
+
+    console.log(table);
+    tableWrapper.append(table);
+
+    return tableWrapper;
+}
+
+function createProfileEntries(belt_grade, body) {
+    belt_grade.forEach(createProfileRow);
+
+    function createProfileRow(item) {
+        var row = body.insertRow(-1);
+        var cell = row.insertCell(0);
+        cell.innerHTML = (`${item[0]}`);
+        var cell2 = row.insertCell(1);
+        cell2.innerHTML = (`${item[1]}`);
+        var cell3 = row.insertCell(2);
+        cell3.innerHTML = (`${item[2]}`);
+    }
+}
+
+
+
 
 const UpdateSyllabusPageElements = (data) => {
     document.getElementById('name').innerHTML = `${data.name}`;
@@ -58,7 +127,7 @@ const UpdateSyllabusPageElements = (data) => {
     data.syllabus.forEach(createTables);
 
     function createTables(beltSyllabusPair) {
-        document.body.appendChild(genTable(beltSyllabusPair[1], beltSyllabusPair[0]));
+        document.body.appendChild(genSyllabusTable(beltSyllabusPair[1], beltSyllabusPair[0]));
         linebreak = document.createElement("br");
         document.body.appendChild(linebreak);
         linebreak = document.createElement("br");
@@ -68,7 +137,7 @@ const UpdateSyllabusPageElements = (data) => {
     }
 }
 
-function genTable(syllabus, beltName) {
+function genSyllabusTable(syllabus, beltName) {
     console.log(syllabus);
     var tableWrapper = document.createElement("div");
     tableWrapper.className = "table-wrapper";

@@ -29,6 +29,11 @@ body {
     background: #222629
 }
 
+.thumbnail_wrapper {
+    display: flex;
+    justify-content: center;
+}
+
 h1 {
     text-align: center;
     font-size: 200%;

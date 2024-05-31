@@ -32,12 +32,12 @@ class Profile extends ResourceController
     public function getIndex()
     {
         //TODO: Set up correct belt -> Syllabus
-        $id = auth()->user()->id;
-        $this->model->SetupProfileModel($id);
-        $belt = auth()->user()-belt;
+        $userID = auth()->user()->username;
+        $this->model->SetupProfileModel($userID);
+        $belt = auth()->user()->belt;
         $name = auth()->user()->name;
         $class = auth()->user()->class;
-        $data = ['name' => $name, 'belt_grades' => $this->model->belt_grades, 'beltName' => $this->model->belt, 'class' => $class];
+        $data = ['name' => $name, 'belt_grades' => $this->model->belt_grades, 'beltName' => $belt, 'class' => $class];
         return $this->respond($data);
     }
 

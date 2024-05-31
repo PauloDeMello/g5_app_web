@@ -22,6 +22,8 @@ $routes->get('api/info', 'Home::getIndex');
 $routes->get('api/syllabus', 'Syllabus::getIndex');
 $routes->get('api/announcements', 'Announcements::getIndex');
 $routes->get('profile', 'Profile::index');          // Add this line.
+$routes->get('api/profile', 'Profile::getIndex'); // Add this line.
+$routes->get('api/profile_picture', 'Profile::getImage'); // Add this line.
 
 $routes->post('profile/upload', 'Profile::upload'); // Add this line.
 

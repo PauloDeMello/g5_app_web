@@ -7,16 +7,16 @@ use CodeIgniter\Model;
 class ProfileModel extends Model
 {
     protected $table      = 'profiledata';
-    protected $primaryKey = 'id';
-    protected $userID = 'user_id';
-    protected $beltGrades = 'belt_grades';
+    protected $primary_id = 'id';
+    protected $user_id = 'user_id';
+    protected $belt_grades = 'belt_grades';
 
     public function __construct()
     {
         $this->db = \Config\Database::connect();
     }
 
-    public function ReturnSyllabusArrayBeltPair($beltGradesString)
+    public function ReturnBeltGradesArray($beltGradesString)
     {
 
         $beltGradesArray = explode(" ,. ", $beltGradesString);
@@ -48,7 +48,6 @@ class ProfileModel extends Model
 
         $formattedBeltGradesArray[] = $this->ReturnBeltGradesArray($beltGradesString);
         
-        $this->beltGrades = $formattedBeltGradesArray;
-        $this->belt = $currentBelt;
+        $this->belt_grades = $formattedBeltGradesArray;
     }
 }
