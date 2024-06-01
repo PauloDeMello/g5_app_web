@@ -122,7 +122,7 @@ function createProfileEntries(belt_grade, body) {
         if (item[0].includes("Double Tag")) {
             var passedString = "PART TWO PASSED";
         }
-        cell2.innerHTML = (`${passedString} - ${item[1]}`);
+        cell2.innerHTML = (`<b>${passedString} - ${item[1]}</b>`);
         var cell3 = row.insertCell(2);
         cell3.style.textAlign = 'center';
         cell3.style.fontFamily = 'edo-sz';

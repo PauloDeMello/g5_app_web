@@ -17,7 +17,8 @@ class App extends BaseConfig
      * E.g., http://example.com/
      */
     //public string $baseURL = 'https://instantly-super-glider.ngrok-free.app';
-    public string $baseURL = 'http://192.168.0.161';
+    //public string $baseURL = 'http://192.168.0.161';
+    public string $baseURL = "http://18.133.130.127";
     //public string $baseURL = 'http://localhost';
 
     /**
