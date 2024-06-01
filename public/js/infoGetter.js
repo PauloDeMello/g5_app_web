@@ -110,10 +110,22 @@ function createProfileEntries(belt_grade, body) {
     function createProfileRow(item) {
         var row = body.insertRow(-1);
         var cell = row.insertCell(0);
+        cell.style.textAlign = 'center';
         cell.innerHTML = (`${item[0]}`);
         var cell2 = row.insertCell(1);
-        cell2.innerHTML = (`${item[1]}`);
+        cell2.style.textAlign = 'center';
+        var passedString = "FULL GRADE PASSED";
+        if (item[0].includes("Tag")) {
+            console.log("here");
+            var passedString = "PART ONE PASSED";
+        }
+        if (item[0].includes("Double Tag")) {
+            var passedString = "PART TWO PASSED";
+        }
+        cell2.innerHTML = (`${passedString} - ${item[1]}`);
         var cell3 = row.insertCell(2);
+        cell3.style.textAlign = 'center';
+        cell3.style.fontFamily = 'edo-sz';
         cell3.innerHTML = (`${item[2]}`);
     }
 }

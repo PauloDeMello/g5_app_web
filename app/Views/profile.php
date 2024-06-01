@@ -29,25 +29,8 @@
 <body> 
   <div class="container">
     <div class="thumbnail_wrapper">
-    <img id=profile_picture alt="\public\images\apple-icon-180.png" class="img-thumbnail" style="vertical-align: middle;" ></img>
-    <?php foreach ($errors as $error): ?>
-      <li><?= esc($error) ?></li>
-    <?php endforeach ?>
-  </div>
-    <div class="dropdown">
-    <div class="thumbnail_wrapper">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" style="display: flex; justify-content: center;"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Change Profile Picture
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <?= form_open_multipart('profile/upload'); ?>
-          <input type="file" name="userfile">
-          <br><br>
-          <input type="submit" value="upload">
-          <br><br>
-        </div>
+    <img id=profile_picture class="img-thumbnail" style="vertical-align: middle;" width="100" height="100"></img>
     </div>
-  </div>
     <h1 id=name style="margin: auto;"></h1>
   </div>
 </body>

@@ -45,10 +45,16 @@
                 <a class="nav-link" href="home">Home</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="profile">Profile</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="syllabus">Syllabus</a>
             </li>
             </ul>
             <ul class="navbar-nav  ms-auto" style="padding-left: 55px; padding-right: 50px;">
+            <li class="nav-item">
+                <a class="nav-link " href="settings">Settings</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link " href="logout">Logout</a>
             </li>
