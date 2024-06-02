@@ -133,11 +133,11 @@ function createProfileEntries(belt_grade, body) {
         var cell2 = row.insertCell(1);
         cell2.style.textAlign = 'center';
         var passedString = "FULL GRADE PASSED";
-        if (item[0].includes("Tag")) {
+        if (item[4].includes("Tag")) {
             console.log("here");
             var passedString = "PART ONE PASSED";
         }
-        if (item[0].includes("Double Tag")) {
+        if (item[4].includes("Double Tag")) {
             var passedString = "PART TWO PASSED";
         }
         cell2.innerHTML = (`<b>${passedString} - ${item[1]}</b>`);
@@ -223,7 +223,13 @@ function createSyllabusTableEntries(syllabus, body) {
 function createSyllabusRow(body, item) {
     var row = body.insertRow(-1);
     var cell = row.insertCell(0);
-    cell.innerHTML = (`${item[0]}`);
+    if (item[0].includes("Kata") || item[0].includes("Waza")) {
+        cell.innerHTML = (`<b>${item[0]}<b>`);
+    }
+    else {
+        cell.innerHTML = (`${item[0]}`);
+    }
+
     var cell2 = row.insertCell(1);
     var techniqueSide = "N/A"
     cell2.innerHTML = (`${techniqueSide}`);

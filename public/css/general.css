@@ -32,6 +32,7 @@ body {
 .thumbnail_wrapper {
     display: flex;
     justify-content: center;
+    margin: 0% 20% 0%;
 }
 
 h1 {
@@ -203,6 +204,16 @@ body {
     right: 0%;
     top: 0%;
 }
+
+@media only screen and (max-width: 480px) {
+    .fl-table td {
+        font-size: 4vw;
+        text-align: left;
+        padding: 8px;
+        color: #dfdfdf;
+    }
+}
+
 
 @media screen and (max-width: 600px) {
     .topnav a:not(:first-child) {

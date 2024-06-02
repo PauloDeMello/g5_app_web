@@ -167,10 +167,18 @@ h3 {
 
 .h4,
 h4 {
-    font-size: calc(1.275rem + .3vw);
+    font-size: calc(2rem + .3vw);
 }
 
 @media (min-width:1200px) {
+
+    .h4,
+    h4 {
+        font-size: 1.5em;
+    }
+}
+
+@media only screen and (max-width: 600px) {
 
     .h4,
     h4 {
@@ -645,7 +653,7 @@ progress {
 }
 
 .img-thumbnail {
-    padding: .25rem;
+    padding: .05rem;
     background-color: #fff;
     border: 1px solid var(--bs-border-color);
     border-radius: .375rem;

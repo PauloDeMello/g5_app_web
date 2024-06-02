@@ -16,6 +16,8 @@
         <div class="card col-12 col-md-5 shadow-sm">
             <div class="card-body">
                 <h5 class="card-title mb-5"><?= "Settings" ?></h5>
+                <hr>
+        <h6> Change profile picture: </h6>
 
       <?= form_open_multipart('settings/upload'); ?>
           <input type="file" name="userfile" style="float: left; display: inline-block;">
@@ -40,6 +42,7 @@
         <?php if (session('message') !== null) : ?>
                 <div class="alert alert-success" role="alert"><?= session('message') ?></div>
                 <?php endif ?> 
+                <hr>
 </div>
 </div>
 </body>

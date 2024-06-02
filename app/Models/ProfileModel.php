@@ -65,6 +65,7 @@ class ProfileModel extends Model
         for ($i=0; $i < count($beltGradesArray); $i++){
             $valueArray = explode(" | ", $beltGradesArray[$i]);
             $belt_name = $valueArray[0];
+            $valueArray[] = $belt_name;
             $valueArray[0] = $kyuBeltPair[$belt_name];
             $formattedBeltGradesArray[] = $valueArray;
         }
