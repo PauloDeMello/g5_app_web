@@ -23,7 +23,7 @@ class Settings extends ResourceController
     {
 
         echo view('templates/header', );
-        echo view('settings', ['errors' => []]);
+        echo view('settings', ['errors' => [], 'messages' => []]);
         echo view('templates/footer', );
     }
 
@@ -67,12 +67,10 @@ class Settings extends ResourceController
             ],
         ];
         if (! $this->validateData([], $validationRule)) {
-            $data = ['errors' => $this->validator->getErrors()];
-
             echo view('templates/header', );
-            echo view('settings', $data);
+            echo view('settings');
             echo view('templates/footer', );
-            return;
+            return redirect()->route('settings')->withInput()->with('errors', $this->validator->getErrors());
         }
 
         $img = $this->request->getFile('userfile');
@@ -98,19 +96,15 @@ class Settings extends ResourceController
             $img->save($full_filepath);
             //$filepath2 = getenv('IMG_WRITEPATH') . 'uploads/';
 
-            $data = ['uploaded_fileinfo' => new File($full_filepath), 'errors' => [], 'message' => "Upload Succesful."];
-
             echo view('templates/header', );
-            echo view('settings', $data);
+            echo view('settings', );
             echo view('templates/footer', );
-            return redirect()->route('settings');
+            return redirect()->route('settings')->with('message', "Upload Successful.");
         }
 
-        $data = ['errors' => 'The file has already been moved.'];
-
         echo view('templates/header', );
-        echo view('settings', $data);
+        echo view('settings', );
         echo view('templates/footer', );
-        return;
+        return redirect()->route('settings')->with('error', "The file has already been moved.");
     }
 }
