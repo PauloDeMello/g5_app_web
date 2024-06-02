@@ -14,6 +14,25 @@ class Profile extends ResourceController
     protected $format    = 'json';
 
     protected $helpers = ['form'];
+
+    protected $kyuBeltPair = 
+    ['Yellow Tag' => '6th',
+    'Yellow' => '6th',
+    'Orange Tag' => '5th',
+    'Orange' => '5th',
+    'Green Tag' => '4th',
+    'Green' => '4th',
+    'Purple Tag' => '3rd',
+    'Purple' => '3rd',
+    'Blue Tag' => '2nd',
+    'Blue' => '2nd',
+    'Brown Tag' => '1st',
+    'Brown Double Tag' => '1st',
+    'Brown' => '1st',
+    'Black Tag' => 'Black Belt',
+    'Black Double Tag' => 'Black Belt',
+    'Black' => 'Black Belt'];
+	
     
     // Prefered way
     public function __construct()

@@ -89,7 +89,7 @@ function genProfileTable(belt_grade) {
     var headerRow = header.insertRow(-1);
     var th = document.createElement("th");
     th.innerText = `Grading Record`;
-    th.colSpan = 3;
+    th.colSpan = 100;
     th.style.color = '#fdfdfd';
     th.style.backgroundColor = '#191c1e';
     headerRow.appendChild(th);
@@ -105,13 +105,31 @@ function genProfileTable(belt_grade) {
 }
 
 function createProfileEntries(belt_grade, body) {
+
+    var row = body.insertRow(-1);
+    var cell = row.insertCell(0);
+    cell.style.textAlign = 'center';
+    cell.innerHTML = (`<b>KYU</b>`);
+
+    var cell2 = row.insertCell(1);
+    cell2.style.textAlign = 'center';
+    cell2.innerHTML = (`<b>Date</b>`);
+
+    var cell3 = row.insertCell(2);
+    cell3.style.textAlign = 'center';
+    cell3.innerHTML = (`<b>Grade</b>`);
+
+    var cell4 = row.insertCell(3);
+    cell4.style.textAlign = 'center';
+    cell4.innerHTML = (`<b>Examiner</b>`);
+
     belt_grade.forEach(createProfileRow);
 
     function createProfileRow(item) {
         var row = body.insertRow(-1);
         var cell = row.insertCell(0);
         cell.style.textAlign = 'center';
-        cell.innerHTML = (`${item[0]}`);
+        cell.innerHTML = (`<b>${item[0]}</b>`);
         var cell2 = row.insertCell(1);
         cell2.style.textAlign = 'center';
         var passedString = "FULL GRADE PASSED";
@@ -127,6 +145,9 @@ function createProfileEntries(belt_grade, body) {
         cell3.style.textAlign = 'center';
         cell3.style.fontFamily = 'edo-sz';
         cell3.innerHTML = (`${item[2]}`);
+        var cell4 = row.insertCell(3);
+        cell4.style.textAlign = 'center';
+        cell4.innerHTML = (`<b>${item[3]}</b>`);
     }
 }
 
