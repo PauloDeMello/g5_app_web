@@ -23,12 +23,6 @@
     -moz-box-sizing: border-box;
 }
 
-body {
-    font-family: Helvetica;
-    -webkit-font-smoothing: antialiased;
-    background: #222629
-}
-
 .thumbnail_wrapper {
     display: flex;
     justify-content: center;
@@ -148,7 +142,6 @@ td {
 
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 .topnav {
