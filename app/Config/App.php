@@ -18,8 +18,8 @@ class App extends BaseConfig
      */
     //public string $baseURL = 'https://instantly-super-glider.ngrok-free.app';
     //public string $baseURL = 'http://192.168.0.161';
-    //public string $baseURL = "http://18.133.130.127";
-    public string $baseURL = 'http://localhost';
+    public string $baseURL = "http://18.133.130.127";
+    //public string $baseURL = 'http://localhost';
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.

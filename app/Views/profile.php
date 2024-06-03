@@ -32,7 +32,7 @@
     <div container style="margin: auto; display: flex; align-items: center; gap: 1em;">
       <img id=profile_picture class="img-thumbnail" width="100" height="100" style="border-radius: 50%;"></img>
       <h4 id=name style="margin-top: 0; margin-bottom: 0; text-align: center; font-weight: normal;"></h4>
-      <img id=belt class="img-thumbnail" width="100" height="100" src="/images/belts/Belt4@112.png" style="background-color: transparent; border-radius: 50%;"></img>
+      <img id=belt class="img-thumbnail" width="100" height="100" src="/images/belts/Purple.png" style="background-color: transparent; border-radius: 50%;"></img>
       </div>
     </div>
     </div>

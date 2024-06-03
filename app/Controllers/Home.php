@@ -37,8 +37,9 @@ class Home extends ResourceController
     {
         $name = auth()->user()->name;
         $class = auth()->user()->class;
+        $belt = auth()->user()->belt;
 
-        $data = ['name' => $name, 'class' => $class];
+        $data = ['name' => $name, 'class' => $class, 'beltName' => $belt];
 
         return $this->respond($data);
     }

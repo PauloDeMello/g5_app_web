@@ -30,7 +30,16 @@
 </head>
 
 <body>
-    <h1 id="name" ></h1>
+<div class="container py-0" style="display: inline-block align-items: center;">
+    <div class="media col-md-10 col-lg-8 col-xl-7 p-0 my-4 mx-auto" style="display: flex; align-items: center;">
+      <div container="" style="margin: auto; display: flex; align-items: center; gap: 1em;">
+        <h4 id="name" style="text-align: center;"></h4>
+        <img id=belt class="img-thumbnail" width="70" height="70" src="/images/belts/Purple.png" style="background-color: transparent; border-radius: 50%;"></img>
+      </div>
+    </div>
+</div>
+
+    <hr>
     <div class="col-md-6" style="margin: auto; width: 80%;">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">

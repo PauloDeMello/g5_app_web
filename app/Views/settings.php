@@ -12,10 +12,10 @@
 
 
   </div>
-  <div class="container d-flex justify-content-center p-5">
-        <div class="card col-12 col-md-5 shadow-sm">
+  <div class="container-xxl flex-wrap flex-md-nowrap w-80">
+        <div class="card shadow-sm" style="width=100%">
             <div class="card-body">
-                <h5 class="card-title mb-5"><?= "Settings" ?></h5>
+                <h5 class="card-title md-5"><?= "Settings" ?></h5>
                 <hr>
         <h6> Change profile picture: </h6>
 

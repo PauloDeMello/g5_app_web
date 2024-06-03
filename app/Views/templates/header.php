@@ -33,14 +33,14 @@
 <body>
    <style> .navbar-brand {font-family: edo-sz} </style>
     <div>    
-    <header class="navbar navbar-expand-lg nav-fill w-80 navbar-dark border-bottom border-top border-light" style="z-index: 1000; top: 0px; width: 100%; position: fixed; background-color: #191c1e;">
+    <header class="navbar navbar-expand-md navbar-dark bd-navbar border-bottom border-top border-light" style="z-index: 1000; top: 0px; width: 100%; position: fixed; background-color: #191c1e;">
     <nav class="container-xxl flex-wrap flex-md-nowrap" aria-label="Main navigation">
     <a class="navbar-brand">
     <img src="/images/g5-logo-crop.webp" width="45" height="45" alt=""></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon" > </span>
     </button>
-        <div class="navbar-collapse collapse show" id="navbarNav">
+        <div class="navbar-collapse collapse" id="navbarNav">
             <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav pt-2 py-md-0">
             <li class="nav-item col-6 col-md-auto">
                 <a class="nav-link" href="home">Home</a>

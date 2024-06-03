@@ -49,7 +49,9 @@ const GetImage = async (route) => {
 }
 
 const UpdateHomePageInfo = (data) => {
-    document.getElementById('name').innerHTML = `Welcome ${data.name}`;
+    document.getElementById('name').innerHTML = `Welcome, ${data.name}`;
+    document.getElementById('belt').src = `/images/belts/${data.beltName}.png`;
+
 }
 
 const UpdateHomePageAnnouncements = (data) => {
@@ -67,6 +69,7 @@ const UpdateProfilePicElement = (data) => {
 
 const UpdateProfilePageElements = (data) => {
     document.getElementById('name').innerHTML = `${data.name}`;
+    document.getElementById('belt').src = `/images/belts/${data.beltName}.png`;
 
     data.belt_grades.forEach(createTable);
 
@@ -156,6 +159,7 @@ function createProfileEntries(belt_grade, body) {
 
 const UpdateSyllabusPageElements = (data) => {
     document.getElementById('name').innerHTML = `${data.name}`;
+    document.getElementById('belt').src = `/images/belts/${data.beltName}.png`;
 
     data.syllabus.forEach(createTables);
 
@@ -187,14 +191,6 @@ function genSyllabusTable(syllabus, beltName) {
     th.innerText = `${beltName} Belt Syllabus`;
     th.colSpan = 2;
     beltNameRow.appendChild(th);
-
-    var header = table.createTHead(-1);
-    var headerRow = header.insertRow(-1);
-    var th = document.createElement("th");
-    th.innerText = `Technique`;
-    th.colSpan = 2;
-    th.style.fontWeight = "normal";
-    headerRow.appendChild(th);
 
     var body = table.createTBody();
 
