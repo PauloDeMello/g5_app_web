@@ -7,7 +7,7 @@
 - Installable PWA for windows / android and ios
 - Caching of HTML, CSS and API calls (basically runs offline apart from login/logout functionality).
   - And runs very fast...
-- Runs LOCALLY.
+- Hosted on AWS at http://18.133.130.127/login
 
 ## TODO
 - Admin page with ability to modify user data + simple UI
